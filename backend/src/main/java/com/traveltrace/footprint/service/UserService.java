@@ -40,9 +40,9 @@ public class UserService {
     private UserProfileDTO getUserProfile(User user) {
         long visitedCount = userCityRepository.countByUserAndStatus(user, CityStatus.VISITED);
         long wantToVisitCount = userCityRepository.countByUserAndStatus(user, CityStatus.WANT_TO_VISIT);
-        long postsCount = postRepository.countByUserAndStatusInOrderByCreatedAtDesc(
+        long postsCount = postRepository.countByUserAndStatusIn(
                 user, List.of(PostStatus.APPROVED, PostStatus.PENDING)
-        ).getTotalElements();
+        );
 
         return UserProfileDTO.builder()
                 .id(user.getId())

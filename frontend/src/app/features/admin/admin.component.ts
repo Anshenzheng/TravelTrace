@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -10,11 +10,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { PostService } from '../../../core/services/post.service';
-import { AuthService } from '../../../core/services/auth.service';
-import { Post, PostStatus, AuditRequest } from '../../../core/models/post.model';
+import { PostService } from '../../core/services/post.service';
+import { AuthService } from '../../core/services/auth.service';
+import { Post, PostStatus, AuditRequest } from '../../core/models/post.model';
 
 @Component({
   selector: 'app-admin',
@@ -447,7 +447,7 @@ export class AdminComponent implements OnInit {
     this.isLoading = true;
 
     this.postService.getPendingPosts(this.currentPage, this.pageSize).subscribe({
-      next: (response) => {
+      next: (response: any) => {
         if (response.success) {
           this.posts = response.data.content;
           this.totalElements = response.data.totalElements;
@@ -488,7 +488,7 @@ export class AdminComponent implements OnInit {
     };
 
     this.postService.auditPost(request).subscribe({
-      next: (response) => {
+      next: (response: any) => {
         if (response.success) {
           const message = approved ? '审核通过' : '已拒绝';
           this.snackBar.open(message, '关闭', {
@@ -611,16 +611,12 @@ export class AuditDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<AuditDialogComponent>,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) public data: { post: Post; approved: boolean }
   ) {
-    const data = (dialogRef.config.data as any);
     this.auditForm = this.fb.group({
       reason: [null, data.approved ? [] : [Validators.required]]
     });
-  }
-
-  get data(): any {
-    return this.dialogRef.config.data;
   }
 
   onSubmit(): void {
