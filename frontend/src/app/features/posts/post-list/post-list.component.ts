@@ -10,12 +10,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { PostService } from '../../../../core/services/post.service';
-import { CityService } from '../../../../core/services/city.service';
-import { AuthService } from '../../../../core/services/auth.service';
-import { Post, PostStatus } from '../../../../core/models/post.model';
-import { City } from '../../../../core/models/city.model';
-import { ApiResponse } from '../../../../core/models/user.model';
+import { PostService } from '../../../core/services/post.service';
+import { CityService } from '../../../core/services/city.service';
+import { AuthService } from '../../../core/services/auth.service';
+import { Post, PostStatus } from '../../../core/models/post.model';
+import { City } from '../../../core/models/city.model';
+import { ApiResponse } from '../../../core/models/user.model';
 
 @Component({
   selector: 'app-post-list',

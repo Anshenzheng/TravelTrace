@@ -11,9 +11,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { PostService } from '../../../../core/services/post.service';
-import { AuthService } from '../../../../core/services/auth.service';
-import { Post, Comment, CreateCommentRequest, PostStatus } from '../../../../core/models/post.model';
+import { PostService } from '../../../core/services/post.service';
+import { AuthService } from '../../../core/services/auth.service';
+import { Post, Comment, CreateCommentRequest, PostStatus } from '../../../core/models/post.model';
 
 @Component({
   selector: 'app-post-detail',

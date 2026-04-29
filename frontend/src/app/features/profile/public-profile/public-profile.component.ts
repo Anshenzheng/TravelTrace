@@ -6,12 +6,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { UserService } from '../../../../core/services/user.service';
-import { CityService } from '../../../../core/services/city.service';
-import { PostService } from '../../../../core/services/post.service';
-import { UserProfile } from '../../../../core/models/user.model';
-import { UserCity, CityStatus } from '../../../../core/models/city.model';
-import { Post, PostStatus } from '../../../../core/models/post.model';
+import { UserService } from '../../../core/services/user.service';
+import { CityService } from '../../../core/services/city.service';
+import { PostService } from '../../../core/services/post.service';
+import { UserProfile } from '../../../core/models/user.model';
+import { UserCity, CityStatus } from '../../../core/models/city.model';
+import { Post, PostStatus } from '../../../core/models/post.model';
 
 @Component({
   selector: 'app-public-profile',
