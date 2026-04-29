@@ -11,11 +11,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { PostService } from '../../../../core/services/post.service';
-import { CityService } from '../../../../core/services/city.service';
-import { AuthService } from '../../../../core/services/auth.service';
-import { Post, CreatePostRequest, PostStatus } from '../../../../core/models/post.model';
-import { City } from '../../../../core/models/city.model';
+import { PostService } from '../../../core/services/post.service';
+import { CityService } from '../../../core/services/city.service';
+import { AuthService } from '../../../core/services/auth.service';
+import { Post, CreatePostRequest, PostStatus } from '../../../core/models/post.model';
+import { City } from '../../../core/models/city.model';
 
 @Component({
   selector: 'app-post-create',

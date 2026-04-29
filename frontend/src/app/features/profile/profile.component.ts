@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
@@ -9,16 +9,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { UserService } from '../../../core/services/user.service';
-import { CityService } from '../../../core/services/city.service';
-import { PostService } from '../../../core/services/post.service';
-import { AuthService } from '../../../core/services/auth.service';
-import { UserProfile } from '../../../core/models/user.model';
-import { UserCity, CityStatus } from '../../../core/models/city.model';
-import { Post, PostStatus } from '../../../core/models/post.model';
+import { UserService } from '../../core/services/user.service';
+import { CityService } from '../../core/services/city.service';
+import { PostService } from '../../core/services/post.service';
+import { AuthService } from '../../core/services/auth.service';
+import { UserProfile } from '../../core/models/user.model';
+import { UserCity, CityStatus } from '../../core/models/city.model';
+import { Post, PostStatus } from '../../core/models/post.model';
 
 @Component({
   selector: 'app-profile',
@@ -811,9 +811,10 @@ export class EditProfileDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<EditProfileDialogComponent>,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    const profile = (dialogRef.config.data as any)?.profile;
+    const profile = this.data?.profile;
     this.profileForm = this.fb.group({
       nickname: [profile?.nickname || ''],
       avatar: [profile?.avatar || ''],

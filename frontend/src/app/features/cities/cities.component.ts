@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -11,12 +11,13 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTabsModule } from '@angular/material/tabs';
-import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';
-import { CityService } from '../../../core/services/city.service';
-import { City, CityStatus, UserCity, AddCityRequest } from '../../../core/models/city.model';
-import { ApiResponse } from '../../../core/models/user.model';
+import { MatNativeDateModule } from '@angular/material/core';
+import { CityService } from '../../core/services/city.service';
+import { City, CityStatus, UserCity, AddCityRequest } from '../../core/models/city.model';
+import { ApiResponse } from '../../core/models/user.model';
 
 @Component({
   selector: 'app-cities',
@@ -672,7 +673,8 @@ export class AddCityDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<AddCityDialogComponent>,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.cityForm = this.fb.group({
       status: [this.data?.status || CityStatus.VISITED, Validators.required],
@@ -680,10 +682,6 @@ export class AddCityDialogComponent {
       rating: [this.data?.rating || 0],
       notes: [this.data?.notes || '']
     });
-  }
-
-  get data(): any {
-    return this.dialogRef.config.data;
   }
 
   onSubmit(): void {
@@ -701,6 +699,3 @@ export class AddCityDialogComponent {
     this.dialogRef.close(request);
   }
 }
-
-// Need to import MatNativeDateModule
-import { MatNativeDateModule } from '@angular/material/core';

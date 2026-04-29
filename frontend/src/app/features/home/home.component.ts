@@ -6,11 +6,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { PostService } from '../../../core/services/post.service';
-import { CityService } from '../../../core/services/city.service';
-import { AuthService } from '../../../core/services/auth.service';
-import { Post } from '../../../core/models/post.model';
-import { City } from '../../../core/models/city.model';
+import { PostService } from '../../core/services/post.service';
+import { CityService } from '../../core/services/city.service';
+import { AuthService } from '../../core/services/auth.service';
+import { Post } from '../../core/models/post.model';
+import { City } from '../../core/models/city.model';
 
 @Component({
   selector: 'app-home',
