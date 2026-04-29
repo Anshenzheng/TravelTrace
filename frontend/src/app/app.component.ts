@@ -5,6 +5,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatDividerModule } from '@angular/material/divider';
 import { AuthService } from './core/services/auth.service';
 import { JwtResponse } from './core/models/user.model';
 
@@ -19,7 +20,8 @@ import { JwtResponse } from './core/models/user.model';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDividerModule
   ],
   template: `
     <mat-toolbar color="primary" class="navbar">
